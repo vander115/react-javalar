@@ -1,7 +1,7 @@
 import { Position } from './Position';
 import { Time } from './Time';
 
-class Planet {
+export class Planet {
     private _name: string;
     private _index: number;
     private _velocity: number;
@@ -14,8 +14,8 @@ class Planet {
         name: string,
         index: number,
         velocity: number,
-        color: string,
         instantDuration: number,
+        color: string,
     ) {
         this._name = name;
         this._index = index;

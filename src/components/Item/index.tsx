@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Position } from '../../classes/Position';
 import { ItemContainer } from './styles';
+import { usePlanet } from '../../hooks/planets';
 
 interface IItemsProps {
     x: number;
@@ -8,20 +9,35 @@ interface IItemsProps {
 }
 
 export function Item({ x, y }: IItemsProps) {
-    const [color, setColor] = useState('lightgray');
-    const itemPosition = new Position(x, y);
-    const javaPoint = [
-        new Position(8, 7),
-        new Position(8, 8),
-        new Position(8, 9),
-        new Position(7, 7),
-        new Position(7, 8),
-        new Position(7, 9),
-    ];
+    const { java, planets } = usePlanet();
 
-    if (javaPoint.includes(itemPosition)) {
-        setColor('red');
-    }
+    const [color, setColor] = useState('lightgray');
+
+    const itemPosition = new Position(x, y);
+
+    const generateColor = useCallback(() => {
+        java.forEach((element) => {
+            if (
+                element.getX() == itemPosition.getX() &&
+                element.getY() == itemPosition.getY()
+            ) {
+                setColor('red');
+            }
+        });
+
+        planets.forEach((planet) => {
+            if (
+                planet.getPosition().getX() == itemPosition.getX() &&
+                planet.getPosition().getY() == itemPosition.getY()
+            ) {
+                setColor(planet.getColor());
+            }
+        });
+    }, []);
+
+    useEffect(() => {
+        generateColor();
+    }, []);
 
     return (
         <ItemContainer color={color}>
