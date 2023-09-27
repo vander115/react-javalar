@@ -1,5 +1,5 @@
-import { Position } from './Position';
-import { Time } from './Time';
+import { Position } from '../Position';
+import { Time } from '../Time';
 
 export class Planet {
     private _name: string;
@@ -68,6 +68,12 @@ export class Planet {
             this._position.incrementY();
         } else if (this._position.getX() < 9 + this._index) {
             this._position.incrementX();
+        }
+    }
+
+    public move(numberOfInstants: number): void {
+        for (let i = 0; i < numberOfInstants * this._velocity; i++) {
+            this.moveOnePosition();
         }
     }
 }

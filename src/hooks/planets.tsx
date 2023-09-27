@@ -4,9 +4,18 @@ import {
     useCallback,
     useContext,
     useMemo,
+    useState,
 } from 'react';
-import { Planet } from '../classes/Planet';
+
+import { Planet } from '../classes/Planet/Planet';
 import { Position } from '../classes/Position';
+import { Python } from '../classes/Planet/Python';
+import { JavaScript } from '../classes/Planet/JavaScript';
+import { RubyOnRails } from '../classes/Planet/RubyOnRails';
+import { PHP } from '../classes/Planet/PHP';
+import { CSharp } from '../classes/Planet/CSharp';
+import { CPlusPlus } from '../classes/Planet/CPlusPlus';
+import { C } from '../classes/Planet/C';
 
 interface IPlanetContext {
     planets: Planet[];
@@ -21,6 +30,15 @@ interface IPlanetProviderProps {
 const PlanetContext = createContext<IPlanetContext>({} as IPlanetContext);
 
 export function PlanetProvider({ children }: IPlanetProviderProps) {
+    const [planets, setPlanets] = useState<Planet[]>([
+        new Python(),
+        new JavaScript(),
+        new RubyOnRails(),
+        new PHP(),
+        new CSharp(),
+        new CPlusPlus(),
+        new C(),
+    ]);
     const java = [
         new Position(8, 7),
         new Position(8, 8),
@@ -29,23 +47,15 @@ export function PlanetProvider({ children }: IPlanetProviderProps) {
         new Position(7, 8),
         new Position(7, 9),
     ];
-    let planets = [
-        new Planet('Python', 1, 4, 24.0, 'lightyellow'),
-        new Planet('JavaScript', 2, 3, 10.0, 'yellow'),
-        new Planet('Ruby on Rails', 3, 2, 48.0, 'red'),
-        new Planet('PHP', 4, 2, 60.0, 'blue'),
-        new Planet('C#', 5, 1, 4.0, 'purple'),
-        new Planet('C++', 6, 2, 0.5, 'lightblue'),
-        new Planet('C', 7, 10, 0.1, 'darkblue'),
-    ];
-
-    console.log(planets);
 
     const handleMove = useCallback((numberOfInstants: number) => {
-        planets.forEach((planet) => {
-            for (let i = 0; i < numberOfInstants; i++) {
-                planet.moveOnePosition();
-            }
+        setPlanets((oldPlanets) => {
+            const newPlanets = oldPlanets.map((planet) => {
+                planet.move(numberOfInstants);
+
+                return planet;
+            });
+            return newPlanets;
         });
         console.log(planets);
     }, []);

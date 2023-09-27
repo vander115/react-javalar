@@ -16,6 +16,8 @@ export function Item({ x, y }: IItemsProps) {
     const itemPosition = new Position(x, y);
 
     const generateColor = useCallback(() => {
+        setColor('lightgray');
+
         java.forEach((element) => {
             if (
                 element.getX() == itemPosition.getX() &&
@@ -33,11 +35,12 @@ export function Item({ x, y }: IItemsProps) {
                 setColor(planet.getColor());
             }
         });
-    }, []);
+    }, [planets, java]);
 
     useEffect(() => {
+        setColor('lightgray');
         generateColor();
-    }, []);
+    }, [planets]);
 
     return (
         <ItemContainer color={color}>
