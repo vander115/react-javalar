@@ -1,13 +1,12 @@
 import { System } from '../../components/System';
-import { usePlanet } from '../../hooks/planets';
+import { PlanForm } from './components/PlanForm';
 import { HomeContainer } from './styles';
 
 export function Home() {
-    const { handleMove } = usePlanet();
     return (
         <HomeContainer>
             <System />
-            <button onClick={() => handleMove(1)}>andar</button>
+            <PlanForm />
         </HomeContainer>
     );
 }

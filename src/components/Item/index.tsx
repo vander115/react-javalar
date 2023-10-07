@@ -44,7 +44,9 @@ export function Item({ x, y }: IItemsProps) {
 
     return (
         <ItemContainer color={color}>
-            {x},{y}
+            <span>
+                {x},{y}
+            </span>
         </ItemContainer>
     );
 }
