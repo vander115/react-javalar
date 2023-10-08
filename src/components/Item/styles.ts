@@ -12,10 +12,13 @@ export const ItemContainer = styled.div<IItemContainer>`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.75rem;
-    color: black;
+    box-shadow: 10px 0px 15px 0px rgba(0, 0, 0, 0.15),
+        8px -2px 10px 0px rgba(255, 255, 255, 0.57) inset;
+    transition: all 0.2s ease;
 
     span {
-        mix-blend-mode: revert;
+        font-size: 0.75rem;
+        font-weight: bold;
+        color: white;
     }
 `;

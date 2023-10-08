@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import backgroundImage from '../assets/background.png';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -15,5 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: center;
     width: 100%;
     min-height: 100vh;
-  }
+    background: #000 url(${backgroundImage}) no-repeat center;
+    background-size: cover;
+}
 `;

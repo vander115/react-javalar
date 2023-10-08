@@ -9,3 +9,13 @@ export const HomeContainer = styled.div`
     height: 100%;
     width: 100%;
 `;
+
+export const JavalarLogo = styled.figure`
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    img {
+        width: 15rem;
+        height: auto;
+    }
+`;
