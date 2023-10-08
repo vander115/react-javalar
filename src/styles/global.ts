@@ -19,4 +19,10 @@ export const GlobalStyle = createGlobalStyle`
     background: #000 url(${backgroundImage}) no-repeat center;
     background-size: cover;
 }
+
+@media (max-width: 700px) {
+  html {
+    font-size: 60%;
+  }
+}
 `;
