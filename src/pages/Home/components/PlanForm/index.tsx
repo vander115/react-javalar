@@ -5,7 +5,7 @@ import { usePlanet } from '../../../../hooks/planets';
 import { PlanFormContainer } from './styles';
 
 export function PlanForm() {
-    const { handleMove, setNumberOfInstants, numberOfInstants } = usePlanet();
+    const { handleMove, setNumberOfInstants } = usePlanet();
     return (
         <PlanFormContainer>
             <NumberInput
