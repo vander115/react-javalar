@@ -36,7 +36,7 @@ Tools used in the development of this project.
 **Access the link below and the JavaLar System model in action**
 - [React JavaLar System](https://react-javalar.vercel.app/)
 
-![image](https://github.com/vander115/react-javalar/assets/101757815/b1d4fc39-4da5-45ca-824b-8a528b5f1475)
+![Captura de tela 2023-10-08 141020](https://github.com/vander115/react-javalar/assets/101757815/4693ac73-d588-47e9-bafd-deeb65d5e3b2)
 
 **Ready! Now just enjoy and test JavaLar’s features!**
 
