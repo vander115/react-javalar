@@ -9,7 +9,7 @@
 <p align="center">Welcome to the JavaLar System!</p>
 
 <p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/vander115/react-javalar?color=%23ffb1b2">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/vander115/java-javalar?color=%23ffb1b2">
   
   <a href="https://github.com/matheralvs/todo-list/commits/main">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/vander115/react-javalar?color=%23ffb1b2">
