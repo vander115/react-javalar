@@ -8,11 +8,7 @@ export function PlanForm() {
     const { handleMove, setNumberOfInstants } = usePlanet();
     return (
         <PlanFormContainer>
-            <NumberInput
-                type="number"
-                min={0}
-                handleChange={(value) => setNumberOfInstants(value)}
-            />
+            <NumberInput handleChange={(value) => setNumberOfInstants(value)} />
             <Button onClick={handleMove}>Mover</Button>
         </PlanFormContainer>
     );

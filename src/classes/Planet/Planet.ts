@@ -1,14 +1,13 @@
+import { CelestialBody } from '../CelestialBody/CelestialBody';
 import { Position } from '../Position';
 import { Time } from '../Time';
 
-export class Planet {
-    private _name: string;
-    private _index: number;
-    private _velocity: number;
-    private _color: string;
+export abstract class Planet extends CelestialBody {
+    protected _index: number;
+    protected _velocity: number;
 
-    private _time: Time;
-    private _position: Position;
+    protected _time: Time;
+    protected _position: Position;
 
     constructor(
         name: string,
@@ -16,21 +15,17 @@ export class Planet {
         velocity: number,
         instantDuration: number,
         color: string,
+        iconUrl: string,
     ) {
-        this._name = name;
+        super(name, color, iconUrl);
         this._index = index;
         this._velocity = velocity;
-        this._color = color;
 
         let initialY: number = 8;
         let initialX: number = 8 + this._index;
 
         this._position = new Position(initialX, initialY);
         this._time = new Time(instantDuration);
-    }
-
-    public getName(): string {
-        return this._name;
     }
 
     public getIndex(): number {
@@ -47,10 +42,6 @@ export class Planet {
 
     public getTime(): Time {
         return this._time;
-    }
-
-    public getColor(): string {
-        return this._color;
     }
 
     public moveOnePosition(): void {

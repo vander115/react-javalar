@@ -12,18 +12,20 @@ export function Item({ x, y }: IItemsProps) {
     const { java, planets } = usePlanet();
 
     const [color, setColor] = useState('#59595900');
+    const [icon, setIcon] = useState('');
 
     const itemPosition = new Position(x, y);
 
     const generateColor = useCallback(() => {
         setColor('#59595900');
 
-        java.forEach((element) => {
+        java.getPositions().forEach((element) => {
             if (
                 element.getX() == itemPosition.getX() &&
                 element.getY() == itemPosition.getY()
             ) {
-                setColor('red');
+                setColor(java.getColor());
+                setIcon(java.getIconUrl());
             }
         });
 
@@ -33,11 +35,13 @@ export function Item({ x, y }: IItemsProps) {
                 planet.getPosition().getY() == itemPosition.getY()
             ) {
                 setColor(planet.getColor());
+                setIcon(planet.getIconUrl());
             }
         });
     }, [planets, java]);
 
     useEffect(() => {
+        setIcon('');
         setColor('#59595900');
         generateColor();
     }, [planets]);
@@ -45,7 +49,13 @@ export function Item({ x, y }: IItemsProps) {
     return (
         <ItemContainer color={color}>
             <span>
-                {x},{y}
+                {icon ? (
+                    <img src={icon} alt="icon" />
+                ) : (
+                    <>
+                        {x},{y}
+                    </>
+                )}
             </span>
         </ItemContainer>
     );

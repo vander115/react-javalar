@@ -9,7 +9,7 @@ import {
 } from 'react';
 
 import { Planet } from '../classes/Planet/Planet';
-import { Position } from '../classes/Position';
+import { Java } from '../classes/Start/Java';
 import { Python } from '../classes/Planet/Python';
 import { JavaScript } from '../classes/Planet/JavaScript';
 import { RubyOnRails } from '../classes/Planet/RubyOnRails';
@@ -20,7 +20,7 @@ import { C } from '../classes/Planet/C';
 
 interface IPlanetContext {
     planets: Planet[];
-    java: Position[];
+    java: Java;
     handleMove(): void;
     numberOfInstants: number;
     setNumberOfInstants: Dispatch<React.SetStateAction<number>>;
@@ -43,14 +43,8 @@ export function PlanetProvider({ children }: IPlanetProviderProps) {
         new CPlusPlus(),
         new C(),
     ]);
-    const java = [
-        new Position(8, 7),
-        new Position(8, 8),
-        new Position(8, 9),
-        new Position(7, 7),
-        new Position(7, 8),
-        new Position(7, 9),
-    ];
+
+    const java = useMemo(() => new Java(), []);
 
     const handleMove = useCallback(() => {
         setPlanets((oldPlanets) => {
